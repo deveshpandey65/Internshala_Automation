@@ -24,7 +24,7 @@ const storage = multer.diskStorage({
         cb(null, 'uploads/');
     },
     filename: function (req, file, cb) {
-        const { email } = req.body; // Assuming 'email' is part of the form data
+        const { email } = req.body; 
         const fileName = `${email}.pdf`;
         cb(null, fileName);
     }
@@ -49,15 +49,3 @@ app.post('/api/apply', upload.single('resume'), async (req, res) => {
 });
 
 
-
-// app.get('/api/apply', async (req, res) => {
-//     const url = "https://internshala.com/registration/student?utm_source=is_header_homepage";
-//     const email = "deveshpa65@gmail.com";
-//     const passwd = "Deveshpa65";
-//     try {
-//         await apply(url, email, passwd);
-//         res.send('Application process completed');
-//     } catch (error) {
-//         res.status(500).send(`Error during application process: ${error.message}`);
-//     }
-// });
